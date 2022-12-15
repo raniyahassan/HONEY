@@ -12,7 +12,7 @@ protected:
 
 public:
     Generate(string m_platType);
-    virtual void generator(RenderWindow& win) const = 0;
+    virtual vector<Sprite> generator(RenderWindow& win) const = 0;
     string getType();
 };
 
@@ -21,7 +21,7 @@ class Begin : public Generate
 private:
 public:
     Begin();
-    void generator(RenderWindow& win) const override;
+    vector<Sprite> generator(RenderWindow& win) const override;
 };
 
 class beginRemainder : public Generate
@@ -29,7 +29,7 @@ class beginRemainder : public Generate
 private:
 public:
     beginRemainder();
-    void generator(RenderWindow& win) const override;
+    vector<Sprite> generator(RenderWindow& win) const override;
 };
 
 class general : public Generate
@@ -38,7 +38,7 @@ private:
     int count;
 public:
     general(int i);
-    void generator(RenderWindow& win) const override;
+    vector<Sprite> generator(RenderWindow& win) const override;
 };
 
 
