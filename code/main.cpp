@@ -1,6 +1,7 @@
 #include "Constants.h"
 #include "Player.h"
 #include "Platform.h"
+#include "Generate.h"
 #include "Screen.h"
 
 int main()
@@ -9,6 +10,19 @@ int main()
     STATE state = START; 
 	RenderWindow window(VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "jumpingGame", Style::Default);
     int Ypos = 100; 
+	int count = 0; 
+
+	Font font;
+	if (!font.loadFromFile("font/txt.otf"))
+	{
+	    cout << "Error loading font";
+	}
+	Text text; 
+	text.setFont(font);
+	text.setOrigin(-400,-1000); 
+	text.setString("click to start!");
+	text.setCharacterSize(45);
+	text.setFillColor(Color::White);
 
 	Texture playerTexture;
 	Texture *platTexture = new Texture; 
@@ -20,7 +34,11 @@ int main()
 	Player player(&playerTexture, PLAYER_SPEED, PLAYER_JUMP_HEIGHT);
 
 	Platform plat1(platTexture, Vector2f(PLAT_WIDTH, PLAT_HEIGHT), Vector2f(350.0f, 150.0f));
-    vector<Sprite> platforms = plat1.generator(WINDOW_WIDTH, WINDOW_HEIGHT); 
+    vector<Sprite> platforms = plat1.generator(); 
+
+	Begin* set1 = new Begin(); 
+	beginRemainder* set2 = new beginRemainder(); 
+	general* set3 = new general(count); 
 
 	float deltaTime = 0.0f;
 	Clock clock;
@@ -60,13 +78,15 @@ int main()
         }*/
 		
 		window.clear(Color(255, 255, 191));
-        screen.start(window); 
+		if (state == START) {screen.start(window); window.draw(text); }
         if (state == PLAYING)
         {
-            screen.move(); 
+			set1->generator(window);
+			set2->generator(window);
+			//set3->generator(window);
             window.setView(view);
             player.Draw(window);
-            for (int i = 0; i < platforms.size(); i++) {window.draw(platforms[i]);}
+            //for (int i = 0; i < platforms.size(); i++) {window.draw(platforms[i]);}
             view.setCenter(WINDOW_WIDTH/2, player.GetPosition().y-200);
         }
 		window.display();

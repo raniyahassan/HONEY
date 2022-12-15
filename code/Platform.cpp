@@ -27,21 +27,24 @@ Vector2f Platform::GetPosition()
 	return body.getPosition();
 }
 
-vector<Sprite> Platform::generator(double width, double height)
+vector<Sprite> Platform::generator()
 {
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
     srand(time(0));
-    vector<Sprite> x(13); 
+    vector<Sprite> x(10); 
     for (int i = 0; i < x.size(); i++)
     {
         x[i].setTexture(*texture);
         x[i].setScale(0.1, 0.1);
-        x[i].setPosition(10 + (rand() % 900), -600 + (rand() % 1000));
-        
+        x[i].setPosition(10 + (rand() % 900), (700 + rand() % 1000));
         cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
     }
-
+    Sprite y(*texture); 
+    y.setScale(0.1,0.1);
+    y.setPosition(450, 1220); 
+    x.push_back(y); 
+    
     return x; 
 }
 

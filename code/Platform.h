@@ -11,7 +11,7 @@ public:
 	FloatRect GetHitbox();
 	Vector2f GetPosition();
 	Vector2f GetHalfSize() { return body.getSize() / 2.0f; }
-    vector<Sprite> generator(double width, double height); 
+    vector<Sprite> generator(); 
     void shift(vector<Sprite>&,Player); 
 
 private:

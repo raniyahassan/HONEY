@@ -12,7 +12,6 @@ public:
 	void OnCollision();
 	FloatRect GetHitbox();
 	void stopY();
-	//Vector2f GetHalfSize() { return body.getSize() / 2.0f; }
 	void Move(float yMove);
 	float getY();
     void winBounds(); 

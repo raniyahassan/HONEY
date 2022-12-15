@@ -12,16 +12,17 @@ Screen::Screen(double width, double height)
     button.setTexture(*texture3); 
     button.setScale(0.8,0.8);    
     FloatRect bound = button.getGlobalBounds();
-    button.setPosition((width/2)-(bound.width/2), 841);  
+    button.setPosition((width/2)-(bound.width/2), 700);  
     
-    /*Texture *texture4 = new Texture;
-    texture4->loadFromFile("images/i.png");
+    Texture *texture4 = new Texture;
+    texture4->loadFromFile("images/logo.png");
     logo.setTexture(*texture4);
     logo.setScale(0.9, 0.9); 
     FloatRect bound2 = logo.getGlobalBounds();
-    logo.setPosition((width/2)-(bound2.width/2), 200);  */
+    logo.setPosition((width/2)-(bound2.width/2), 200);  
     
     //logo.setPosition(800, 200);
+
 }; 
 
 
@@ -29,14 +30,10 @@ void Screen::start(RenderWindow& window)
 {
 	window.draw(beginningbackground); 
     window.draw(button); 
-    //window.draw(logo); 
+    window.draw(logo); 
 }
 
-void Screen::move()
-{
-    beginningbackground.setScale(0,0); 
-    button.setScale(0,0) ;
-}
+
 
 FloatRect Screen::getBounds()
 {

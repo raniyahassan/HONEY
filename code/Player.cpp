@@ -5,10 +5,6 @@ Player::Player(Texture* texture, float speed, float jumpHeight)
 {
 	this->speed = speed;
 	this->jumpHeight = jumpHeight;
-
-	//body.setSize(Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT));
-	//body.setOrigin(Vector2f((body.getSize().x / 1.5f), (body.getSize().y)));
-	//body.setOrigin(body.getSize() / 4.0f);
     body.setScale(0.15, 0.15); 
 	body.setPosition(PLAYER_START_X, PLAYER_START_Y);
 	body.setTexture(*texture);
