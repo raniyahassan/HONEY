@@ -1,4 +1,5 @@
 #include "Platform.h"
+#include "Player.h"
 #include <time.h>
 
 Platform::Platform(Texture* texture, Vector2f size, Vector2f position)
@@ -30,15 +31,27 @@ vector<Sprite> Platform::generator(double width, double height)
 {
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
-
     srand(time(0));
-    vector<Sprite> x(15); 
+    vector<Sprite> x(13); 
     for (int i = 0; i < x.size(); i++)
     {
         x[i].setTexture(*texture);
-        x[i].setPosition(10 + (rand() % 900), 10 + (rand() % 1000));
         x[i].setScale(0.1, 0.1);
+        x[i].setPosition(10 + (rand() % 900), -600 + (rand() % 1000));
+        
+        cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
     }
 
     return x; 
 }
+
+void Platform::shift(vector<Sprite>& vec, Player P)
+{
+    srand(time(0));
+    for (int i = 0; i < vec.size(); i++)
+    {
+        vec[i].setPosition(10 + (rand() % 900), (i*(-600) + (rand() % 1000)));
+
+    }
+}
+
