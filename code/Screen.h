@@ -19,6 +19,7 @@ class Screen
     public:
         Screen(double,double); 
         void start(RenderWindow&); 
+        Sprite bg(RenderWindow&); 
         FloatRect getBounds(); 
 };
 

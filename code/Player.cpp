@@ -39,13 +39,8 @@ Vector2f Player::GetPosition() { return body.getPosition(); } //returns the top 
 
 void Player::OnCollision()
 {
-	
-	//falling down
 	velocity.y = -sqrt(2.0f * 981.0f * jumpHeight);
-	
-	
 }
-
 FloatRect Player::GetHitbox()
 {
 	return body.getGlobalBounds();

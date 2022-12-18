@@ -25,7 +25,7 @@ vector<Sprite> Begin::generator(RenderWindow& win) const
     {
         x[i].setTexture(*texture);
         x[i].setScale(0.1, 0.1);
-        x[i].setPosition(10 + (rand() % 900), 700 + (rand() % 1000)); 
+        x[i].setPosition(10 + (rand() % 900), 10 + (rand() % 700)); 
     }
     return x; 
 }
@@ -37,12 +37,13 @@ vector<Sprite> beginRemainder::generator(RenderWindow& win) const
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
     srand(time(0));
-    vector<Sprite> x(20); 
+    vector<Sprite> x(50); 
     for (int i = 0; i < x.size(); i++)
     {
         x[i].setTexture(*texture);
         x[i].setScale(0.1, 0.1);
-        x[i].setPosition(10 + (rand() % 900), (rand() % 500));
+        x[i].setPosition(10 + (rand() % 900), 1000 - (rand() % 2000));
+        cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
         
     }
 
@@ -58,15 +59,15 @@ vector<Sprite> general::generator(RenderWindow& win) const
 {
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
-    srand(time(0));
-    vector<Sprite> x(25); 
+    srand(time(0)); 
+    vector<Sprite> x(50); 
     for (int i = 0; i < x.size(); i++)
     {
         x[i].setTexture(*texture);
         x[i].setScale(0.1, 0.1);
-        float newY = (WINDOW_HEIGHT *(i-1) + (rand() % (WINDOW_HEIGHT*i)));
-        x[i].setPosition(10 + (rand() % 900), -newY);
+        x[i].setPosition(10 + (rand() % 900), (1000*count) - (rand() % (2000*count)));
+        cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
+        
     }
-
-    return x; 
+   return x;
 }
