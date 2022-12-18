@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Constants.h"
+#include "Player.h"
+
 
 using namespace sf;
 using namespace std;
@@ -39,6 +41,8 @@ private:
 public:
     general(int i);
     vector<Sprite> generator(RenderWindow& win) const override;
+    void update(vector<Sprite>& x, float); 
 };
+
 
 

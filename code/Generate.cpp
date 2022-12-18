@@ -42,7 +42,7 @@ vector<Sprite> beginRemainder::generator(RenderWindow& win) const
     {
         x[i].setTexture(*texture);
         x[i].setScale(0.1, 0.1);
-        x[i].setPosition(10 + (rand() % 900), 1000 - (rand() % 2000));
+        x[i].setPosition(10 + (rand() % 900), 600 - (rand() % 2000));
         cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
         
     }
@@ -60,14 +60,26 @@ vector<Sprite> general::generator(RenderWindow& win) const
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
     srand(time(0)); 
-    vector<Sprite> x(20); 
+    vector<Sprite> x(10); 
     for (int i = 0; i < x.size(); i++)
     {
         x[i].setTexture(*texture);
         x[i].setScale(0.1, 0.1);
         x[i].setPosition(10 + (rand() % 900), (1000*count) - (rand() % (2000*count)));
         cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
-        
+
     }
    return x;
+}
+
+void general::update(vector<Sprite> &x, float PlayerPosY)
+
+{
+    for (int i = 0; i < x.size(); i++)
+    {
+        if (x[i].getPosition().y - (PlayerPosY) > 500)
+        {
+            x[i].move(0, -750 + (rand() % (100*count)));
+        }
+    }
 }

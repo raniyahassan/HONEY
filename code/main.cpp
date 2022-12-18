@@ -60,12 +60,17 @@ int main()
 		}
 		player.Update(deltaTime);
         player.winBounds(); 
+
 		FloatRect pCol = player.GetHitbox();
-		/*for (int i = 0; i < v3.size(); i++)
+
+		set3->update(v3, player.GetPosition().y); 
+
+
+		for (int i = 0; i < v3.size(); i++)
 		{
 			if (v3[i].getGlobalBounds().intersects(pCol) && player.getY() > 0)
 				player.OnCollision();
-		}*/
+		}
 		for (int i = 0; i < v2.size(); i++)
 		{
 			if (v2[i].getGlobalBounds().intersects(pCol) && player.getY() > 0)
@@ -76,12 +81,10 @@ int main()
 		if (state == START) {screen.start(window); window.draw(text); }
         if (state == PLAYING)
         {
-			//bg.setPosition(0, player.GetPosition().y-900); 
-			//window.draw(bg); 
 			//for (int i = 0; i < 10; i++) {window.draw(v[i]);}
 			cout << "(" << player.GetPosition().x << ", " << player.GetPosition().y << ")" << endl; 
-			for (int i = 0; i < 20; i++) {window.draw((v2[i]));}
-			//for (int i = 0; i < 20; i++) {window.draw((v3[i]));}
+			for (int i = 0; i < v2.size(); i++) {window.draw((v2[i]));}
+			for (int i = 0; i < v3.size(); i++) {window.draw((v3[i]));}
             window.setView(view);
             player.Draw(window);
             view.setCenter(WINDOW_WIDTH/2, player.GetPosition().y-200);
@@ -90,7 +93,6 @@ int main()
         }
 		if (state == END)
 		{
-			
 			player.Draw(window); 
 			if (player.GetPosition().y > 3500){
 			view.setCenter(500,750); 
