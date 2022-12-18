@@ -60,7 +60,7 @@ vector<Sprite> general::generator(RenderWindow& win) const
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
     srand(time(0)); 
-    vector<Sprite> x(10); 
+    vector<Sprite> x(14); 
     for (int i = 0; i < x.size(); i++)
     {
         x[i].setTexture(*texture);
@@ -73,13 +73,12 @@ vector<Sprite> general::generator(RenderWindow& win) const
 }
 
 void general::update(vector<Sprite> &x, float PlayerPosY)
-
 {
     for (int i = 0; i < x.size(); i++)
     {
         if (x[i].getPosition().y - (PlayerPosY) > 500)
         {
-            x[i].move(0, -750 + (rand() % (100*count)));
+            x[i].move(-200 + rand() % 400, -800 - (rand() % 500));
         }
     }
 }

@@ -1,6 +1,5 @@
 #include "Constants.h"
 #include "Player.h"
-//#include "Platform.h"
 #include "Generate.h"
 #include "Screen.h"
 
@@ -75,13 +74,12 @@ int main()
 		{
 			if (v2[i].getGlobalBounds().intersects(pCol) && player.getY() > 0)
 				player.OnCollision();
-		}
+		} 
 		window.clear(Color(255, 255, 191));
 		Sprite bg = screen.bg(window); 
 		if (state == START) {screen.start(window); window.draw(text); }
         if (state == PLAYING)
         {
-			//for (int i = 0; i < 10; i++) {window.draw(v[i]);}
 			cout << "(" << player.GetPosition().x << ", " << player.GetPosition().y << ")" << endl; 
 			for (int i = 0; i < v2.size(); i++) {window.draw((v2[i]));}
 			for (int i = 0; i < v3.size(); i++) {window.draw((v3[i]));}
