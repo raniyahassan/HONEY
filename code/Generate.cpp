@@ -37,7 +37,7 @@ vector<Sprite> beginRemainder::generator(RenderWindow& win) const
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
     srand(time(0));
-    vector<Sprite> x(50); 
+    vector<Sprite> x(20); 
     for (int i = 0; i < x.size(); i++)
     {
         x[i].setTexture(*texture);
@@ -60,7 +60,7 @@ vector<Sprite> general::generator(RenderWindow& win) const
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
     srand(time(0)); 
-    vector<Sprite> x(50); 
+    vector<Sprite> x(20); 
     for (int i = 0; i < x.size(); i++)
     {
         x[i].setTexture(*texture);
