@@ -12,9 +12,6 @@ using namespace sf;
 class Screen 
 {
     private:
-        Texture texture; 
-        Texture texture2; 
-        Texture texture3;
         Sprite beginningbackground; 
         Sprite button; 
         Sprite logo; 
@@ -23,7 +20,7 @@ class Screen
         void start(RenderWindow&, Font&); 
         Sprite bg(RenderWindow&); 
         FloatRect getBounds(); 
-        void endScreen(Player&, RenderWindow&, View&);
+        void endScreen(Player&, RenderWindow&, View&, Font&, Clock&);
         void playScreen(Player&, View&, RenderWindow&, vector<Sprite>&, Clock&, Font&);
 };
 

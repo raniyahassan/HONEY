@@ -18,22 +18,6 @@ public:
     string getType();
 };
 
-class Begin : public Generate
-{
-private:
-public:
-    Begin();
-    vector<Sprite> generator( ) const override;
-};
-
-class beginRemainder : public Generate
-{
-private:
-public:
-    beginRemainder();
-    vector<Sprite> generator( ) const override;
-};
-
 class general : public Generate
 {
 private:

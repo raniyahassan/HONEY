@@ -13,45 +13,8 @@ string Generate::getType()
     return platformType;
 }
 
-Begin::Begin() : Generate("Begin") { }
 
-vector<Sprite> Begin::generator() const
-{
-    Texture *texture = new Texture;  
-    texture->loadFromFile("images/bar.png");
-    srand(time(0));
-    vector<Sprite> x(10); 
-    for (int i = 0; i < x.size(); i++)
-    {
-        x[i].setTexture(*texture);
-        x[i].setScale(0.1, 0.1);
-        x[i].setPosition(10 + (rand() % 900), 10 + (rand() % 700)); 
-    }
-    return x; 
-}
-
-beginRemainder::beginRemainder() : Generate("Remainder") { }
-
-vector<Sprite> beginRemainder::generator() const
-{
-    Texture *texture = new Texture;  
-    texture->loadFromFile("images/bar.png");
-    srand(time(0));
-    vector<Sprite> x(20); 
-    for (int i = 0; i < x.size(); i++)
-    {
-        x[i].setTexture(*texture);
-        x[i].setScale(0.1, 0.1);
-        x[i].setPosition(10 + (rand() % 900), 600 - (rand() % 2000));
-        cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
-        
-    }
-
-   return x;
-}
-
-general::general() : Generate("General") 
-{}
+general::general() : Generate("General") {}
 
 vector<Sprite> general::generator() const
 {
@@ -64,8 +27,6 @@ vector<Sprite> general::generator() const
         x[i].setTexture(*texture);
         x[i].setScale(0.1, 0.1);
         x[i].setPosition(10 + (rand() % 900), (1000) - (rand() % (2000)));
-        cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
-
     }
     Sprite start(*texture); 
     start.setScale(0.1, 0.1); 

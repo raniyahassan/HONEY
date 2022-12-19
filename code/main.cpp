@@ -56,7 +56,7 @@ int main()
 			screen.playScreen(player, view, window, platforms, clock2, font); 
 			if (player.GetPosition().y > 2800) {view.setCenter(WINDOW_WIDTH/2, player.GetPosition().y); state = END;}
         }
-		if (state == END) { screen.endScreen(player, window, view); }
+		if (state == END) { screen.endScreen(player, window, view, font, clock2); }
 		window.display();
 	}
 	return 0;
