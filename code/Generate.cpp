@@ -15,7 +15,7 @@ string Generate::getType()
 
 Begin::Begin() : Generate("Begin") { }
 
-vector<Sprite> Begin::generator(RenderWindow& win) const
+vector<Sprite> Begin::generator() const
 {
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
@@ -32,7 +32,7 @@ vector<Sprite> Begin::generator(RenderWindow& win) const
 
 beginRemainder::beginRemainder() : Generate("Remainder") { }
 
-vector<Sprite> beginRemainder::generator(RenderWindow& win) const
+vector<Sprite> beginRemainder::generator() const
 {
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
@@ -50,12 +50,10 @@ vector<Sprite> beginRemainder::generator(RenderWindow& win) const
    return x;
 }
 
-general::general(int i) : Generate("General") 
-{
-    count = i;
-}
+general::general() : Generate("General") 
+{}
 
-vector<Sprite> general::generator(RenderWindow& win) const
+vector<Sprite> general::generator() const
 {
     Texture *texture = new Texture;  
     texture->loadFromFile("images/bar.png");
@@ -65,10 +63,14 @@ vector<Sprite> general::generator(RenderWindow& win) const
     {
         x[i].setTexture(*texture);
         x[i].setScale(0.1, 0.1);
-        x[i].setPosition(10 + (rand() % 900), (1000*count) - (rand() % (2000*count)));
+        x[i].setPosition(10 + (rand() % 900), (1000) - (rand() % (2000)));
         cout << "(" << x[i].getPosition().x << ", " << x[i].getPosition().y << ")" << endl; 
 
     }
+    Sprite start(*texture); 
+    start.setScale(0.1, 0.1); 
+    start.setPosition(PLAYER_START_X, PLAYER_START_Y-30);
+    x.push_back(start); 
    return x;
 }
 

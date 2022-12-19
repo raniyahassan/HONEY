@@ -26,11 +26,17 @@ Screen::Screen(double width, double height)
 }; 
 
 
-void Screen::start(RenderWindow& window)
+void Screen::start(RenderWindow& window, Font &font)
 {
+    Text text; 
+	text.setFont(font);
+	text.setPosition(125,555); 
+	text.setString("CLICK TO START!");
+	text.setCharacterSize(45);
 	window.draw(beginningbackground); 
     window.draw(button); 
     window.draw(logo); 
+    window.draw(text); 
 }
 
 Sprite Screen::bg(RenderWindow& window)
@@ -41,3 +47,33 @@ Sprite Screen::bg(RenderWindow& window)
 
 
 FloatRect Screen::getBounds() { return button.getGlobalBounds(); }
+
+void Screen::endScreen(Player& player, RenderWindow& window, View& view)
+{
+    player.Draw(window); 
+	if (player.GetPosition().y > 3500)
+    {
+        RectangleShape rect(Vector2f{WINDOW_WIDTH*2 , WINDOW_HEIGHT*2}); 
+        rect.setFillColor(Color(0,0,0,100));
+		view.setCenter(500,750); 
+		rect.setPosition(0,0);
+		window.setView(view); 
+		window.draw(rect); 
+    }
+}
+
+void Screen::playScreen(Player& player, View &view, RenderWindow& window, vector<Sprite>& platforms, Clock& clock, Font &font)
+{
+    Text points; 
+    string timeElapsed = "Points: " + to_string(clock.getElapsedTime().asSeconds()); 
+    points.setPosition(20, player.GetPosition().y + 500); 
+    points.setColor(Color::Black);
+    points.setFont(font); 
+    points.setCharacterSize(30); 
+    points.setString(timeElapsed); 
+    for (int i = 0; i < platforms.size(); i++) {window.draw((platforms[i]));}
+    window.setView(view);
+    player.Draw(window);
+    window.draw(points); 
+    view.setCenter(WINDOW_WIDTH/2, player.GetPosition().y-200);   
+}
