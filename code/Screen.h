@@ -15,13 +15,14 @@ class Screen
         Sprite beginningbackground; 
         Sprite button; 
         Sprite logo; 
+        int totalPoints; 
     public:
         Screen(double,double); 
         void start(RenderWindow&, Font&); 
         Sprite bg(RenderWindow&); 
         FloatRect getBounds(); 
-        void endScreen(Player&, RenderWindow&, View&, Font&, Clock&);
-        void playScreen(Player&, View&, RenderWindow&, vector<Sprite>&, Clock&, Font&);
+        void endScreen(Player&, RenderWindow&, View&, Font&, int&);
+        void playScreen(Player&, View&, RenderWindow&, vector<Sprite>&, vector<Sprite>&, Font&, int&);
 };
 
 #endif

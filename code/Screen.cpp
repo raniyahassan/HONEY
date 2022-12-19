@@ -48,9 +48,18 @@ Sprite Screen::bg(RenderWindow& window)
 
 FloatRect Screen::getBounds() { return button.getGlobalBounds(); }
 
-void Screen::endScreen(Player& player, RenderWindow& window, View& view, Font& font, Clock &clock)
+void Screen::endScreen(Player& player, RenderWindow& window, View& view, Font& font, int &points)
 {
+    view.setCenter(WINDOW_WIDTH/2, player.GetPosition().y);
     player.Draw(window); 
+    Text text2; 
+    text2.setPosition(340, 700); 
+    text2.setOutlineColor(Color::White); 
+    text2.setFillColor(Color::Black); 
+    text2.setFont(font); 
+    text2.setOutlineThickness(3); 
+    text2.setCharacterSize(80); 
+    text2.setString("POINTS: " + to_string(totalPoints));
     Text text; 
     text.setPosition(220, 300); 
     text.setOutlineColor(Color::White); 
@@ -68,19 +77,23 @@ void Screen::endScreen(Player& player, RenderWindow& window, View& view, Font& f
 		window.setView(view); 
 		window.draw(rect); 
         window.draw(text); 
+        window.draw(text2); 
     }
 }
 
-void Screen::playScreen(Player& player, View& view, RenderWindow& window, vector<Sprite>& platforms, Clock& clock, Font &font)
+void Screen::playScreen(Player& player, View& view, RenderWindow& window, vector<Sprite>& platforms, vector<Sprite> &fakePlats, Font &font, int &point)
 {
     Text points; 
-    string str = "POINTS: " + to_string(static_cast<int>(clock.getElapsedTime().asSeconds())); 
+    totalPoints = point;
+    string str = "POINTS: " + to_string(totalPoints); 
     points.setPosition(30, player.GetPosition().y-830); 
-    points.setColor(Color::Black);
+    points.setOutlineColor(Color::Black);
+    points.setOutlineThickness(3); 
     points.setFont(font); 
-    points.setCharacterSize(50); 
+    points.setCharacterSize(60); 
     points.setString(str); 
     for (int i = 0; i < platforms.size(); i++) {window.draw((platforms[i]));}
+    for (int i = 0; i < fakePlats.size(); i++) {window.draw((fakePlats[i]));}
     window.setView(view);
     player.Draw(window);
     window.draw(points); 
